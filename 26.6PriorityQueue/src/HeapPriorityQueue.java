@@ -88,19 +88,17 @@ public class HeapPriorityQueue {
   	**/
 	private void reheapDown() {
 		int index = 1;
-		while(index < numItems) {
+		while(index > 0 && index < numItems) {
 			int left = 2 * index;
 			int right = 2 * index + 1;
-			if(index > 0 && index < items.size()-1) { 	 //Make sure there are no IOOB
-				if(greaterThan(items.get(left), items.get(right)) && greaterThan(items.get(right), items.get(left)) ) //weird conflict
-					break;
-				if(greaterThan(items.get(left), items.get(right))) { //items[left] > items[right]
-					swap(right, index);
-					index = right;
-				} else { //items[right] > items[left]
-					swap(left, index);
-					index = left;		
-				}
+			if(greaterThan(items.get(left), items.get(right)) && greaterThan(items.get(right), items.get(left)) ) //weird conflict
+				break;
+			if(greaterThan(items.get(left), items.get(right))) { //items[left] > items[right]
+				swap(right, index);
+				index = right;
+			} else { //items[right] > items[left]
+				swap(left, index);
+				index = left;		
 			}
 		} 
 	}
@@ -151,7 +149,7 @@ public class HeapPriorityQueue {
   		
 		//Fill in with random values
 		for(int i = 0; i < 10; i++) {
-			Integer num = (int) (Math.random() * 50 + 1);
+			Integer num = (int) (Math.random() * 10 + 1);
 			hpq.add(num);
 		}
 		System.out.println(hpq);
