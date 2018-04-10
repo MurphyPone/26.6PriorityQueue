@@ -94,7 +94,7 @@ public class HeapPriorityQueue {
 			if(greaterThan(items.get(left), items.get(right)) && greaterThan(items.get(right), items.get(left)) ) //weird conflict
 				break;
 			if(greaterThan(items.get(left), items.get(right))) { //items[left] > items[right]
-				swap(right, index);
+				swap(right, index); 
 				index = right;
 			} else { //items[right] > items[left]
 				swap(left, index);
